@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test</title>
+</head>
+<body>
+
+    <input type="button" id="btnModA" value="Test Model A" />
+    <br />
+    <span id="spnResult"></span>
+
+    <!--Delayed Javascript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script>
+
+        $(document)
+
+            .on('click', '#btnModA', function (e) {
+
+                var uri = 'api/ModelA';
+                var _data = { Command: "Insert", varA: "xxx", varB: "yyy" };
+                $.ajax({
+                    url: uri,
+                    data: JSON.stringify(_data),
+                    header: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+                        'Access-Control-Allow-Headers': 'Authorization'
+                    },
+                    type: 'POST',
+                    async: true,
+                    cache: false,
+                    contentType: "application/json",
+                    dataType: 'text'
+                })
+
+                .done(function (response, textStatus) {
+                    
+                    $('#spnResult').text("Status: " + textStatus + " & Response: " + response);
+
+                })
+
+                .fail(function (xhr, textStatus, errorThrown) {
+
+                    alert(errorThrown);
+
+                })
+
+                .always(function () {
+
+
+                });
+
+            })
+
+        ;
+
+    </script>
+
+</body>
+</html>
