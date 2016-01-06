@@ -1,2 +1,2 @@
 # SimpleDotNetWebAPI
-Super simple .Net Web API
+Super simple .Net MVC Web API
